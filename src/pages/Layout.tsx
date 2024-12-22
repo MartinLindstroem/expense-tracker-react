@@ -21,7 +21,7 @@ const Layout = () => {
             </ul>
           </nav>
         </aside>
-        <main className="flex-1 w-screen h-full p-4 mt-[64px] overflow-y-hidden ml-60">
+        <main className="flex-1 w-screen h-full p-4 mt-[64px] overflow-y-hidden">
           <Outlet />
         </main>
       </div>
