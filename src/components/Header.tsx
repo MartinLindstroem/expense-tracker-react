@@ -11,7 +11,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed mb-1 top-0 left-0 w-full text-inherit p-4 flex h-20 justify-between border-b-2 border-gray-300">
+    <header className="fixed mb-1 top-0 left-0 w-full text-inherit p-4 flex h-20 justify-between border-b-2 border-gray-300 bg-inherit z-999">
       <h1 className="text-3xl font-bold">Expense Insights</h1>
       {isAuthenticated ? (
         <div className="flex items-center">
