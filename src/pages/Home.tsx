@@ -1,5 +1,5 @@
 import Card from "../components/Card";
-import expenses from "../helpers/expenses";
+import { expenses } from "../helpers/expenses";
 import CardContainer from "../components/CardContainer";
 
 const Home = () => {

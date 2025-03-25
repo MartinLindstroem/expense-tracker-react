@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { callApi as callApiUtil } from "../utils/callApi";
 
 interface User {
   email: string;
@@ -6,7 +7,7 @@ interface User {
 }
 
 interface ApiResponse {
-  msg: string;
+  data: [];
   status: number;
   user?: User;
 }
@@ -37,20 +38,7 @@ export const useApi = (): {
     setData(null);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_SERVER_URL}${url}`, {
-        method,
-        headers,
-        credentials: "include",
-        body: body ? JSON.stringify(body) : undefined,
-      });
-
-      const json = await response.json();
-      json.status = response.status;
-
-      console.log("JSON", json);
-
-      // console.log("RESPONSE", res);
-
+      const json = await callApiUtil(url, method, body, headers);
       setData(json);
     } catch (err) {
       setError(`Error: ${err}`);
@@ -60,27 +48,4 @@ export const useApi = (): {
   };
 
   return { data, isPending, error, callApi };
-};
-
-export const callApi = async (
-  url: string,
-  method: "GET" | "POST" | "PUT" | "DELETE",
-  body?: any,
-  headers: Record<string, string> = { "Content-Type": "application/json" }
-): Promise<ApiResponse> => {
-  try {
-    const response = await fetch(`${import.meta.env.VITE_SERVER_URL}${url}`, {
-      method,
-      headers,
-      credentials: "include",
-      body: body ? JSON.stringify(body) : undefined,
-    });
-
-    const json = await response.json();
-    json.status = response.status;
-
-    return json;
-  } catch (err) {
-    throw new Error(`Error: ${err}`);
-  }
 };

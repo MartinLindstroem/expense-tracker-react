@@ -3,7 +3,7 @@ interface Expense {
   amount: number;
 }
 
-const expenses: Expense[] = [
+export const expenses: Expense[] = [
   {
     category: "Takeout",
     amount: 500,
@@ -26,6 +26,6 @@ const expenses: Expense[] = [
   },
 ];
 
-expenses.sort((a, b) => b.amount - a.amount);
+export const expenseCategories = ["Takeout", "Games", "Car", "Clothes", "Groceries"];
 
-export default expenses;
+// expenses.sort((a, b) => b.amount - a.amount);
